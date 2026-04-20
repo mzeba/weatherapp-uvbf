@@ -1,0 +1,72 @@
+[
+    {
+        "city": "Ouagadougou",
+        "country": "Burkina Faso",
+        "temperature": 40,
+        "description": "Ensoleillé",
+        "icon": "☀️"
+    },
+    {
+        "city": "Paris",
+        "country": "France",
+        "temperature": 18,
+        "description": "Nuageux",
+        "icon": "☁️"
+    },
+    {
+        "city": "New York",
+        "country": "USA",
+        "temperature": 25,
+        "description": "Pluvieux",
+        "icon": "🌧️"
+    },
+    {
+        "city": "Tokyo",
+        "country": "Japon",
+        "temperature": 30,
+        "description": "Ensoleillé",
+        "icon": "☀️"
+    },
+    {
+        "city": "Sydney",
+        "country": "Australie",
+        "temperature": 22,
+        "description": "Partiellement nuageux",
+        "icon": "⛅"
+    },
+    {
+        "city": "Moscou",
+        "country": "Russie",
+        "temperature": 10,
+        "description": "Neigeux",
+        "icon": "❄️"
+    },
+    {
+        "city": "Le Caire",
+        "country": "Égypte",
+        "temperature": 35,
+        "description": "Ensoleillé",
+        "icon": "☀️"
+    },
+    {
+        "city": "Rio de Janeiro",
+        "country": "Brésil",
+        "temperature": 28,
+        "description": "Pluvieux",
+        "icon": "🌧️"
+    },
+    {
+        "city": "Londres",
+        "country": "Royaume-Uni",
+        "temperature": 15,
+        "description": "Nuageux",
+        "icon": "☁️"
+    },
+    {
+        "city": "Mumbai",
+        "country": "Inde",
+        "temperature": 32,
+        "description": "Humide",
+        "icon": "💧"
+    }
+]
