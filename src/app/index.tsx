@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import ErrorMessage from "../components/ErrorMessage";
 import SearchBar from "../components/SearchBar";
@@ -10,7 +10,7 @@ import { cityData } from "../types/types";
 export default function Index() {
   const [data, setData] = useState<cityData | undefined>(undefined);
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: "#E0F2FE",
@@ -18,6 +18,6 @@ export default function Index() {
       }}>
       <SearchBar handleSearch={setData} />
       {data ? <WeatherCard data={data} /> : <ErrorMessage />}
-    </View>
+    </SafeAreaView>
   );
 }
