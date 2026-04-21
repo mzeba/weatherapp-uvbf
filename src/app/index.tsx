@@ -8,7 +8,7 @@ import WeatherCard from "../components/WeatherCard";
 import { useData } from "../hooks/data.context";
 
 export default function Index() {
-  const { loading, data } = useData();
+  const { loading, data, fetchData } = useData();
   return (
     <SafeAreaView
       style={{
@@ -16,7 +16,7 @@ export default function Index() {
         backgroundColor: "#E0F2FE",
         padding: 20,
       }}>
-      <SearchBar />
+      <SearchBar fetchData={fetchData} />
       {loading ? <ActivityIndicator animating={loading} size="large" color="#4A90E2" /> : null}
       {data ? <WeatherCard data={data} /> : <ErrorMessage />}
     </SafeAreaView>

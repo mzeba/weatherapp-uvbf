@@ -2,11 +2,8 @@ import { useState } from "react";
 
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-import { useData } from "../hooks/data.context";
-
-const SearchBar = () => {
+const SearchBar = ({ fetchData }: { fetchData: (city: string) => void }) => {
   const [city, setCity] = useState("");
-  const { fetchData } = useData();
 
   const onSearch = () => {
     fetchData(city);
