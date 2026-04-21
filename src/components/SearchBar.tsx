@@ -1,18 +1,15 @@
 import { useState } from "react";
 
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import data from "../utils/data.json";
 
-import { cityData } from "../types/types";
+import { useData } from "../hooks/data.context";
 
-const SearchBar = ({ handleSearch }: { handleSearch: (data: cityData | undefined) => void }) => {
+const SearchBar = () => {
   const [city, setCity] = useState("");
+  const { fetchData } = useData();
 
   const onSearch = () => {
-    const cityItem = data.find((item) => item.city.toLowerCase() === city.toLowerCase()) as
-      | cityData
-      | undefined;
-    handleSearch(cityItem);
+    fetchData(city);
   };
 
   return (
