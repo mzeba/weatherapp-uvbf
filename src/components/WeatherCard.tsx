@@ -1,7 +1,23 @@
+/**
+ * WeatherCard Component
+ *
+ * Affiche les informations météo d'une ville sous forme de carte stylisée.
+ *
+ * @param {cityData} data - Données météo de la ville (nom, pays, température, icône, description).
+ * @returns {JSX.Element} Carte météo formatée pour affichage dans l'application.
+ *
+ * Spécificités Expo/React Native :
+ * - Utilise les styles natifs pour l'affichage.
+ * - Prévu pour affichage sur mobile (iOS/Android).
+ */
 import { StyleSheet, Text, View } from "react-native";
 
 import { cityData } from "../types/types";
 
+/**
+ * Composant principal pour l'affichage d'une carte météo.
+ * @param data Données météo de la ville
+ */
 const WeatherCard = ({ data }: { data: cityData }) => {
   return (
     <View style={styles.card}>
@@ -17,6 +33,11 @@ const WeatherCard = ({ data }: { data: cityData }) => {
 
 export default WeatherCard;
 
+/**
+ * Styles pour le composant WeatherCard.
+ *
+ * NOTE : Les styles sont adaptés pour un affichage centré et une carte visuellement agréable.
+ */
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",

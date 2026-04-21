@@ -1,5 +1,98 @@
 # Welcome to your Expo app 👋
 
+---
+
+## 📚 Documentation technique (structure & composants)
+
+### Structure principale du code (`src/`)
+
+- **Composants UI** :
+  - `WeatherCard` : Affiche les informations météo d'une ville sous forme de carte stylisée.
+  - `SearchBar` : Champ de recherche permettant à l'utilisateur de saisir une ville et de déclencher la récupération des données météo.
+  - `ErrorMessage` : Affiche un message d'erreur lorsque la ville recherchée n'est pas trouvée.
+- **Contexte & hooks** :
+  - `DataProvider` / `useData` : Fournit et consomme le contexte global de données météo (chargement, données, fonction de recherche).
+- **Types** :
+  - `cityData` : Structure des données météo d'une ville (nom, pays, température, description, icône).
+
+### Extraits de documentation structurée (JSDoc/TSDoc)
+
+#### `WeatherCard.tsx`
+
+```
+/**
+ * WeatherCard Component
+ *
+ * Affiche les informations météo d'une ville sous forme de carte stylisée.
+ *
+ * @param {cityData} data - Données météo de la ville (nom, pays, température, icône, description).
+ * @returns {JSX.Element} Carte météo formatée pour affichage dans l'application.
+ *
+ * Spécificités Expo/React Native :
+ * - Utilise les styles natifs pour l'affichage.
+ * - Prévu pour affichage sur mobile (iOS/Android).
+ */
+```
+
+#### `SearchBar.tsx`
+
+```
+/**
+ * SearchBar Component
+ *
+ * Champ de recherche permettant à l'utilisateur de saisir une ville et de déclencher la récupération des données météo.
+ *
+ * @param {(city: string) => void} fetchData - Fonction de rappel pour lancer la recherche météo sur la ville saisie.
+ * @returns {JSX.Element} Barre de recherche avec champ texte et bouton d'action.
+ *
+ * Spécificités Expo/React Native :
+ * - Utilise TextInput et TouchableOpacity pour interaction mobile.
+ * - Prévu pour affichage sur mobile (iOS/Android).
+ */
+```
+
+#### `ErrorMessage.tsx`
+
+```
+/**
+ * ErrorMessage Component
+ *
+ * Affiche un message d'erreur lorsque la ville recherchée n'est pas trouvée.
+ *
+ * @returns {JSX.Element} Message d'erreur formaté pour affichage dans l'application.
+ *
+ * Spécificités Expo/React Native :
+ * - Utilise les styles natifs pour l'affichage.
+ * - Prévu pour affichage sur mobile (iOS/Android).
+ */
+```
+
+#### `src/hooks/data.context.tsx`
+
+```
+// DataProvider : Fournit le contexte global (données météo, état de chargement, fonction fetchData)
+// useData : Hook pour consommer le contexte, lève une erreur si utilisé hors provider
+```
+
+#### `src/types/types.ts`
+
+```
+type cityData = {
+   /** Nom de la ville. */
+   city: string;
+   /** Pays de la ville. */
+   country: string;
+   /** Température actuelle dans la ville (en °C). */
+   temperature: number;
+   /** Description textuelle de la météo (ex: "Ensoleillé"). */
+   description: string;
+   /** Icône météo (peut être un emoji ou un code). */
+   icon: string;
+};
+```
+
+---
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
