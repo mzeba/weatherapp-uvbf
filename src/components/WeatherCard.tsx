@@ -3,26 +3,25 @@
  *
  * Affiche les informations météo d'une ville sous forme de carte stylisée.
  *
- * @param {cityData} data - Données météo de la ville (nom, pays, température, icône, description).
- * @returns {JSX.Element} Carte météo formatée pour affichage dans l'application.
+ * @param {{ data: cityData }} props - Données météo de la ville (voir type cityData)
+ * @returns {JSX.Element} Carte météo formatée pour affichage mobile.
  *
- * Spécificités Expo/React Native :
- * - Utilise les styles natifs pour l'affichage.
- * - Prévu pour affichage sur mobile (iOS/Android).
+ * Détails :
+ * - Affiche le nom, le pays, la date locale, l'icône météo, la température et la description.
+ * - Utilise dayjs pour le formatage de la date.
+ * - Styles adaptés pour mobile (Expo/React Native).
  */
 
-import { StyleSheet, Text, View, Image } from "react-native";
 import dayjs from "dayjs";
-import LocalizedFormat from "dayjs/plugin/localizedFormat";
 import "dayjs/locale/fr";
+import LocalizedFormat from "dayjs/plugin/localizedFormat";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 import { cityData } from "../types/types";
 
 dayjs.extend(LocalizedFormat);
-/**
- * Composant principal pour l'affichage d'une carte météo.
- * @param data Données météo de la ville
- */
+// Composant principal pour l'affichage d'une carte météo.
+// @param data Données météo de la ville (voir type cityData)
 const WeatherCard = ({ data }: { data: cityData }) => {
   return (
     <View style={styles.card}>

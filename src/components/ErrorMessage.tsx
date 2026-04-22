@@ -3,17 +3,15 @@
  *
  * Affiche un message d'erreur lorsque la ville recherchée n'est pas trouvée.
  *
- * @returns {JSX.Element} Message d'erreur formaté pour affichage dans l'application.
+ * @returns {JSX.Element} Message d'erreur formaté pour affichage mobile.
  *
- * Spécificités Expo/React Native :
- * - Utilise les styles natifs pour l'affichage.
- * - Prévu pour affichage sur mobile (iOS/Android).
+ * Détails :
+ * - Affichage centré, message générique.
+ * - Styles adaptés pour mobile (Expo/React Native).
  */
 import { StyleSheet, Text, View } from "react-native";
 
-/**
- * Composant d'affichage d'un message d'erreur générique pour la recherche de ville.
- */
+// Composant d'affichage d'un message d'erreur générique pour la recherche de ville.
 export default function ErrorMessage() {
   return (
     <View style={styles.container}>

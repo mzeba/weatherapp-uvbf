@@ -3,21 +3,20 @@
  *
  * Champ de recherche permettant à l'utilisateur de saisir une ville et de déclencher la récupération des données météo.
  *
- * @param {(city: string) => void} fetchData - Fonction de rappel pour lancer la recherche météo sur la ville saisie.
- * @returns {JSX.Element} Barre de recherche avec champ texte et bouton d'action.
+ * @param {{ fetchData: (city: string) => void }} props - Fonction de récupération météo
+ * @returns {JSX.Element} Barre de recherche avec champ texte et bouton.
  *
- * Spécificités Expo/React Native :
- * - Utilise TextInput et TouchableOpacity pour interaction mobile.
- * - Prévu pour affichage sur mobile (iOS/Android).
+ * Détails :
+ * - Utilise TextInput pour la saisie et TouchableOpacity pour le bouton.
+ * - Le bouton est désactivé si l'utilisateur est hors ligne.
+ * - Styles adaptés pour mobile (Expo/React Native).
  */
 import { useState } from "react";
 
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useData } from "../hooks/data.context";
-/**
- * Composant principal pour la saisie et la recherche d'une ville.
- * @param fetchData Fonction de récupération des données météo
- */
+// Composant principal pour la saisie et la recherche d'une ville.
+// @param fetchData Fonction de récupération météo (ville : string)
 const SearchBar = ({ fetchData }: { fetchData: (city: string) => void }) => {
   const [city, setCity] = useState("");
   const { isConnected } = useData();
@@ -41,8 +40,7 @@ const SearchBar = ({ fetchData }: { fetchData: (city: string) => void }) => {
       <TouchableOpacity
         style={[styles.button, { backgroundColor: isConnected ? "#4A90E2" : "#ddd" }]}
         onPress={onSearch}
-        disabled={!isConnected}
-      >
+        disabled={!isConnected}>
         <Text style={styles.buttonText}>Voir la météo</Text>
       </TouchableOpacity>
     </View>

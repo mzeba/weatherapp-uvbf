@@ -2,142 +2,137 @@
 
 ---
 
-## 📚 Documentation technique (structure & composants)
+## 📚 Documentation technique
 
-### Structure principale du code (`src/`)
+### Structure du projet (`src/`)
 
-- **Composants UI** :
+- **Composants UI** (dossier `src/components/`) :
   - `WeatherCard` : Affiche les informations météo d'une ville sous forme de carte stylisée.
-  - `SearchBar` : Champ de recherche permettant à l'utilisateur de saisir une ville et de déclencher la récupération des données météo.
-  - `ErrorMessage` : Affiche un message d'erreur lorsque la ville recherchée n'est pas trouvée.
-- **Contexte & hooks** :
-  - `DataProvider` / `useData` : Fournit et consomme le contexte global de données météo (chargement, données, fonction de recherche).
-- **Types** :
-  - `cityData` : Structure des données météo d'une ville (nom, pays, température, description, icône).
+  - `SearchBar` : Champ de recherche pour saisir une ville et lancer la récupération météo.
+  - `ErrorMessage` : Affiche un message d'erreur si la ville n'est pas trouvée.
+- **Contexte & hooks** (dossier `src/hooks/`) :
+  - `DataProvider` / `useData` : Fournit et consomme le contexte global météo (chargement, données, fonction de recherche, état réseau).
+- **Types** (dossier `src/types/`) :
+  - `cityData` : Structure des données météo d'une ville (voir ci-dessous).
+- **API** (dossier `src/api/`) :
+  - `api.ts` : Fonctions pour interroger l'API météo.
+- **Données de test** (dossier `src/utils/`) :
+  - `data.json` : Exemple de données météo pour le développement.
 
 ### Extraits de documentation structurée (JSDoc/TSDoc)
 
 #### `WeatherCard.tsx`
 
-```
+```ts
 /**
  * WeatherCard Component
  *
  * Affiche les informations météo d'une ville sous forme de carte stylisée.
- *
- * @param {cityData} data - Données météo de la ville (nom, pays, température, icône, description).
- * @returns {JSX.Element} Carte météo formatée pour affichage dans l'application.
- *
- * Spécificités Expo/React Native :
- * - Utilise les styles natifs pour l'affichage.
- * - Prévu pour affichage sur mobile (iOS/Android).
+ * @param data Données météo de la ville (voir type cityData)
+ * @returns {JSX.Element} Carte météo formatée pour affichage mobile.
  */
 ```
 
 #### `SearchBar.tsx`
 
-```
+```ts
 /**
  * SearchBar Component
  *
  * Champ de recherche permettant à l'utilisateur de saisir une ville et de déclencher la récupération des données météo.
- *
- * @param {(city: string) => void} fetchData - Fonction de rappel pour lancer la recherche météo sur la ville saisie.
- * @returns {JSX.Element} Barre de recherche avec champ texte et bouton d'action.
- *
- * Spécificités Expo/React Native :
- * - Utilise TextInput et TouchableOpacity pour interaction mobile.
- * - Prévu pour affichage sur mobile (iOS/Android).
+ * @param fetchData Fonction de récupération météo (ville : string)
+ * @returns {JSX.Element} Barre de recherche avec champ texte et bouton.
  */
 ```
 
 #### `ErrorMessage.tsx`
 
-```
+```ts
 /**
  * ErrorMessage Component
  *
  * Affiche un message d'erreur lorsque la ville recherchée n'est pas trouvée.
- *
- * @returns {JSX.Element} Message d'erreur formaté pour affichage dans l'application.
- *
- * Spécificités Expo/React Native :
- * - Utilise les styles natifs pour l'affichage.
- * - Prévu pour affichage sur mobile (iOS/Android).
+ * @returns {JSX.Element} Message d'erreur formaté pour affichage mobile.
  */
 ```
 
 #### `src/hooks/data.context.tsx`
 
-```
-// DataProvider : Fournit le contexte global (données météo, état de chargement, fonction fetchData)
+```ts
+// DataProvider : Fournit le contexte global (données météo, état de chargement, fonction fetchData, état réseau)
 // useData : Hook pour consommer le contexte, lève une erreur si utilisé hors provider
 ```
 
 #### `src/types/types.ts`
 
-```
+```ts
 type cityData = {
-   /** Nom de la ville. */
-   city: string;
-   /** Pays de la ville. */
-   country: string;
-   /** Température actuelle dans la ville (en °C). */
-   temperature: number;
-   /** Description textuelle de la météo (ex: "Ensoleillé"). */
-   description: string;
-   /** Icône météo (peut être un emoji ou un code). */
-   icon: string;
+  current: any; // Données météo courantes (température, icône, etc.)
+  location: any; // Infos sur la ville (nom, pays, date locale, etc.)
 };
 ```
 
 ---
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
 
-## Get started
+## 🚀 Démarrage rapide
 
-1. Install dependencies
+Ce projet est basé sur [Expo](https://expo.dev) et a été créé avec [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-   ```bash
-   npm install
-   ```
+### Installation
 
-2. Start the app
+1. Installer les dépendances :
 
-   ```bash
-   npx expo start
-   ```
+```bash
+npm install
+```
 
-In the output, you'll find options to open the app in a
+2. Lancer l'application :
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+```bash
+npx expo start
+```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+3. Suivre les instructions dans le terminal pour ouvrir sur :
 
-## Get a fresh project
+- un émulateur Android
+- un simulateur iOS
+- un appareil physique via Expo Go
 
-When you're ready, run:
+### Réinitialiser le projet
+
+Pour repartir d'une base vierge :
 
 ```bash
 npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Le code de démo sera déplacé dans `app-example/` et un dossier `app/` vide sera créé.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 📦 Dépendances principales
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Voir `package.json` pour la liste complète. Les principaux outils :
 
-## Join the community
+- Expo, React Native, TypeScript
+- @react-native-community/netinfo (état réseau)
+- dayjs (dates)
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🤝 Contribution
+
+1. Forkez le repo et créez une branche.
+2. Faites vos modifications (code, docs, etc.).
+3. Ouvrez une Pull Request.
+
+---
+
+## 📖 Pour aller plus loin
+
+- [Expo documentation](https://docs.expo.dev/)
+- [Tutoriel Expo](https://docs.expo.dev/tutorial/introduction/)
+- [Expo sur GitHub](https://github.com/expo/expo)
+- [Discord Expo](https://chat.expo.dev)
