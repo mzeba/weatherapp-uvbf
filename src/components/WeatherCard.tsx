@@ -10,10 +10,15 @@
  * - Utilise les styles natifs pour l'affichage.
  * - Prévu pour affichage sur mobile (iOS/Android).
  */
-import { StyleSheet, Text, View } from "react-native";
+
+import { StyleSheet, Text, View, Image } from "react-native";
+import dayjs from "dayjs";
+import LocalizedFormat from "dayjs/plugin/localizedFormat";
+import "dayjs/locale/fr";
 
 import { cityData } from "../types/types";
 
+dayjs.extend(LocalizedFormat);
 /**
  * Composant principal pour l'affichage d'une carte météo.
  * @param data Données météo de la ville
@@ -22,11 +27,15 @@ const WeatherCard = ({ data }: { data: cityData }) => {
   return (
     <View style={styles.card}>
       <Text style={styles.cityName}>
-        {data.city}, {data.country}
+        {data.location.name}, {data.location.country}
       </Text>
-      <Text style={styles.icon}>{data.icon}</Text>
-      <Text style={styles.temperature}>{data.temperature}</Text>
-      <Text style={styles.description}>{data.description}</Text>
+      <Text>{dayjs.unix(data.location.localtime_epoch).format("LLLL")}</Text>
+      <Image
+        source={{ uri: `https:${data.current.condition.icon}`, width: 64, height: 64 }}
+        style={styles.icon}
+      />
+      <Text style={styles.temperature}>{data.current.temp_c}°C</Text>
+      <Text style={styles.description}>{data.current.condition.text}</Text>
     </View>
   );
 };
@@ -58,7 +67,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   icon: {
-    fontSize: 48,
     marginBottom: 10,
   },
   temperature: {

@@ -14,6 +14,9 @@
  * - Prévu pour affichage sur mobile (iOS/Android).
  */
 import { Stack } from "expo-router";
+import { useEffect } from "react";
+import { ToastAndroid } from "react-native";
+import { addEventListener } from "@react-native-community/netinfo";
 
 import { DataProvider } from "../hooks/data.context";
 
@@ -25,6 +28,17 @@ import { DataProvider } from "../hooks/data.context";
  * @returns {JSX.Element} Layout principal avec navigation et contexte global.
  */
 export default function RootLayout() {
+  useEffect(() => {
+    const unsubscribe = addEventListener((state) => {
+      if (!state.isConnected) {
+        ToastAndroid.show("Vous n'êtes pas connecté à Internet.", ToastAndroid.LONG);
+      } else {
+        ToastAndroid.show("Vous êtes connecté à Internet.", ToastAndroid.LONG);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <DataProvider>
       <Stack screenOptions={{ headerShown: false }} />

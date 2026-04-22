@@ -1,0 +1,51 @@
+{
+  "current": {
+    "cloud": 0,
+    "condition": {
+      "code": 1000,
+      "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+      "text": "Sunny"
+    },
+    "dewpoint_c": 1.9,
+    "dewpoint_f": 35.5,
+    "diff_rad": 67.22,
+    "dni": 967.96,
+    "feelslike_c": 11,
+    "feelslike_f": 51.8,
+    "gti": 234.71,
+    "gust_kph": 27.8,
+    "gust_mph": 17.2,
+    "heatindex_c": 12.9,
+    "heatindex_f": 55.3,
+    "humidity": 44,
+    "is_day": 1,
+    "last_updated": "2026-04-22 11:00",
+    "last_updated_epoch": 1776848400,
+    "precip_in": 0,
+    "precip_mm": 0,
+    "pressure_in": 30.15,
+    "pressure_mb": 1021,
+    "short_rad": 411.18,
+    "temp_c": 13.1,
+    "temp_f": 55.6,
+    "uv": 2.7,
+    "vis_km": 10,
+    "vis_miles": 6,
+    "wind_degree": 81,
+    "wind_dir": "E",
+    "wind_kph": 24.1,
+    "wind_mph": 15,
+    "windchill_c": 10.8,
+    "windchill_f": 51.4
+  },
+  "location": {
+    "country": "France",
+    "lat": 48.8667,
+    "localtime": "2026-04-22 11:13",
+    "localtime_epoch": 1776849221,
+    "lon": 2.3333,
+    "name": "Paris",
+    "region": "Ile-de-France",
+    "tz_id": "Europe/Paris"
+  }
+}

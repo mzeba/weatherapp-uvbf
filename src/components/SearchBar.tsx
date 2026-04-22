@@ -13,13 +13,14 @@
 import { useState } from "react";
 
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-
+import { useData } from "../hooks/data.context";
 /**
  * Composant principal pour la saisie et la recherche d'une ville.
  * @param fetchData Fonction de récupération des données météo
  */
 const SearchBar = ({ fetchData }: { fetchData: (city: string) => void }) => {
   const [city, setCity] = useState("");
+  const { isConnected } = useData();
 
   /**
    * Déclenche la recherche météo pour la ville saisie.
@@ -37,7 +38,11 @@ const SearchBar = ({ fetchData }: { fetchData: (city: string) => void }) => {
         placeholder="Entrer un ville"
         placeholderTextColor={"#aaa"}
       />
-      <TouchableOpacity style={styles.button} onPress={onSearch}>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: isConnected ? "#4A90E2" : "#ddd" }]}
+        onPress={onSearch}
+        disabled={!isConnected}
+      >
         <Text style={styles.buttonText}>Voir la météo</Text>
       </TouchableOpacity>
     </View>
@@ -64,7 +69,6 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
   },
   button: {
-    backgroundColor: "#4A90E2",
     paddingVertical: 12,
     borderRadius: 25,
     alignSelf: "center",

@@ -1,9 +1,6 @@
 type cityData = {
-  city: string;
-  country: string;
-  temperature: number;
-  description: string;
-  icon: string;
+  current: any;
+  location: any;
 };
 
 export type { cityData };

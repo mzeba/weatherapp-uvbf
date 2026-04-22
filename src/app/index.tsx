@@ -38,7 +38,8 @@ export default function Index() {
         flex: 1,
         backgroundColor: "#E0F2FE",
         padding: 20,
-      }}>
+      }}
+    >
       <SearchBar fetchData={fetchData} />
       {loading ? <ActivityIndicator animating={loading} size="large" color="#4A90E2" /> : null}
       {data ? <WeatherCard data={data} /> : <ErrorMessage />}
